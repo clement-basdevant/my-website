@@ -456,6 +456,11 @@
   .ch dt { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
   .ch dd { margin: 0; min-width: 0; }
   .ch code { font-family: var(--mono); font-size: clamp(15px, 2.2vw, 19px); user-select: all; overflow-wrap: anywhere; }
+  .cv-dl { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font: 500 15px var(--body); padding: 10px 18px; border-radius: 10px; background: var(--measure); color: #fff; text-decoration: none; }
+  .cv-dl::before { content: "↓"; font-weight: 700; }
+  .cv-dl:hover { filter: brightness(1.08); }
+  :root[data-theme="dark"] .cv-dl { color: #0E161B; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .cv-dl { color: #0E161B; } }
   .ch button, .ch .btn { display: inline-block; font: 500 14px var(--body); padding: 9px 16px; border-radius: 10px; border: 0; background: var(--measure); color: #fff; cursor: pointer; text-decoration: none; white-space: nowrap; }
   :root[data-theme="dark"] .ch button, :root[data-theme="dark"] .ch .btn { color: #0E161B; }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ch button, :root:not([data-theme="light"]) .ch .btn { color: #0E161B; } }
@@ -538,6 +543,7 @@
       <span>25 ans</span>
       <span>Ingénieur SeaTech (Grenoble INP)</span>
     </div>
+    <a class="cv-dl" href="img/CV_Clement_Basdevant_2026.pdf" download>Télécharger mon CV (PDF)</a>
     </div>
     <figure class="hero-photo"><img src="img/portrait.webp" alt="Portrait de Clément Basdevant" width="600" height="800"></figure>
   </div>
@@ -1289,6 +1295,11 @@
         <dt>GitHub</dt>
         <dd><code>clement-basdevant</code></dd>
         <dd><a class="btn" href="https://github.com/clement-basdevant" target="_blank" rel="noopener">Voir le profil</a></dd>
+      </div>
+      <div class="ch">
+        <dt>CV</dt>
+        <dd><code>CV 2026 · PDF</code></dd>
+        <dd><a class="btn" href="img/CV_Clement_Basdevant_2026.pdf" download>Télécharger</a></dd>
       </div>
       <div class="ch">
         <dt>Localisation</dt>
