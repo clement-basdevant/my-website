@@ -458,7 +458,7 @@
   .ch code { font-family: var(--mono); font-size: clamp(15px, 2.2vw, 19px); user-select: all; overflow-wrap: anywhere; }
   .cv-dl { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font: 500 15px var(--body); padding: 10px 18px; border-radius: 10px; background: var(--measure); color: #fff; text-decoration: none; }
   .cv-dl::before { content: "↓"; font-weight: 700; }
-  .contact .cv-dl { margin: 6px 0 26px; }
+  .contact .cv-dl { margin: 6px 0 26px; justify-self: start; align-self: start; width: fit-content; }
   .cv-dl:hover { filter: brightness(1.08); }
   :root[data-theme="dark"] .cv-dl { color: #0E161B; }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .cv-dl { color: #0E161B; } }
