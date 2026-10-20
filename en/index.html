@@ -246,6 +246,8 @@
   .asparun-photos figure { margin: 0; position: relative; border-radius: 10px; overflow: hidden; }
   .asparun-photos .tall { grid-row: span 2; }
   .asparun-photos img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .bastille .asparun-photos { grid-template-columns: 1fr; grid-template-rows: 440px; }
+  .bastille .asparun-photos img { object-position: 50% 62%; }
   .asparun-photos figcaption { position: absolute; left: 6px; bottom: 6px; font-family: var(--mono); font-size: 10px; padding: 2px 6px; border-radius: 5px; background: rgba(14, 22, 27, .72); color: #fff; }
   .camp { margin-top: 48px; display: grid; gap: 14px; }
   .camp-head { display: flex; align-items: center; gap: 14px; }
@@ -471,6 +473,7 @@
     .award { grid-template-columns: 180px 1fr; }
     .alumni, .teaser-grid, .pilot, .pilot.clubs, .castore, .asparun { grid-template-columns: 1fr; }
     .asparun-photos { grid-template-rows: 150px 150px; }
+    .bastille .asparun-photos { grid-template-rows: 360px; }
     .castore-logo { max-width: 240px; }
     .award .post { grid-column: 1 / -1; }
   }
@@ -1005,6 +1008,26 @@
       </div>
     </article>
 
+    <article class="asparun bastille">
+      <div class="asparun-text">
+        <span class="label">17 October 2026 · Grenoble · urban trail</span>
+        <h3>Bastille 10 km</h3>
+        <p>A race just for fun, up the cobbled lanes and stairways that climb to the Bastille, with 500 m of elevation gain. 8<sup>th</sup> in a very strong field, and a new 10 km benchmark time.</p>
+        <div class="results">
+          <div class="result">
+            <b>8<sup>th</sup></b>
+            <div><strong>10 km · 500 m elevation gain</strong><span>44'09 · 771 entrants</span></div>
+          </div>
+        </div>
+        <div class="links">
+          <a href="https://resultats-live.com/events/10km-de-la-Bastille-38000-17102026-2/races/10km-de-la-Bastille-38000-17102026-2-10km-SOLO" target="_blank" rel="noopener">Official results</a>
+        </div>
+      </div>
+      <div class="asparun-photos">
+        <figure><img src="../img/bastille-10k.webp" alt="Clément, bib 1605, on the cobbled climb to the Bastille, Grenoble in the background" loading="lazy"><figcaption>© Philippe Durbet · Metro Sports</figcaption></figure>
+      </div>
+    </article>
+
     <article class="asparun">
       <div class="asparun-text">
         <span class="label">8 March 2026 · Meylan · home race</span>
@@ -1071,6 +1094,7 @@
       <table>
         <thead><tr><th>Date</th><th>Event</th><th class="perf">Result</th></tr></thead>
         <tbody>
+          <tr class="hl"><td>17 Oct</td><td>Bastille 10 km, trail 500 m gain <span class="note">· 8<sup>th</sup></span></td><td class="perf">44'09</td></tr>
           <tr class="hl"><td>30 Aug</td><td>10 km, Course de la Rosière <span class="note">· 1<sup>st</sup></span></td><td class="perf">34'12</td></tr>
           <tr><td>1 Jul</td><td>800 m</td><td class="perf">1'56"09</td></tr>
           <tr><td>20 Jun</td><td>800 m</td><td class="perf">1'57"01</td></tr>
@@ -1155,14 +1179,6 @@
   </section>
   </div>
 
-  <section id="cyclisme" class="also">
-    <svg class="also-icon" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="32" r="8"/><circle cx="37" cy="32" r="8"/><path d="M11 32l8-14h12l6 14"/><path d="M19 18l6 14h-14"/><path d="M29 12h5"/><path d="M31 12l-2 6"/></g></svg>
-    <div>
-      <span class="label">Also on two wheels</span>
-      <strong>Cycling</strong>
-      <p>Road cycling.</p>
-    </div>
-  </section>
   </main>
 
   <main data-page="asso">
@@ -1245,6 +1261,11 @@
         <dt>LinkedIn</dt>
         <dd><code>Clément Basdevant</code></dd>
         <dd><a class="btn" href="https://www.linkedin.com/in/cl%C3%A9ment-basdevant-253357230" target="_blank" rel="noopener">View profile</a></dd>
+      </div>
+      <div class="ch">
+        <dt>GitHub</dt>
+        <dd><code>clement-basdevant</code></dd>
+        <dd><a class="btn" href="https://github.com/clement-basdevant" target="_blank" rel="noopener">View profile</a></dd>
       </div>
       <div class="ch">
         <dt>Location</dt>
