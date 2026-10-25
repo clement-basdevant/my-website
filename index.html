@@ -378,6 +378,28 @@
   /* Pollutec */
   .event { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: start; }
   .event-text { display: grid; gap: 14px; max-width: 62ch; }
+  .oss-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 18px 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s; }
+  .oss-card:hover { border-color: var(--measure); transform: translateY(-2px); }
+  .oss-card div { display: grid; gap: 4px; }
+  .oss-card strong { font-family: var(--display); font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
+  .oss-card div span:last-child { color: var(--muted); font-size: 15px; }
+  .oss-card-scipy { width: 40px; height: 40px; }
+  .oss-side { display: grid; gap: 16px; }
+  .oss-use { display: grid; gap: 8px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+  .oss-use code, .steps code, .reports code { font-family: var(--mono); font-size: .92em; }
+  .oss-fig { margin: 0; display: grid; gap: 8px; }
+  .oss-fig img { display: block; width: 100%; border-radius: 12px; border: 1px solid var(--line); background: #fff; }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: step; max-width: 72ch; }
+  .steps li { counter-increment: step; position: relative; padding: 0 0 22px 52px; display: grid; gap: 6px; }
+  .steps li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-weight: 600; background: var(--measure); color: #fff; }
+  .steps li:not(:last-child)::after { content: ""; position: absolute; left: 16px; top: 38px; bottom: 4px; width: 2px; background: var(--line); }
+  .steps strong { font-family: var(--display); font-size: 19px; }
+  .steps p { color: var(--muted); }
+  .lead-sm { color: var(--muted); max-width: 66ch; margin-bottom: 14px; }
+  .reports { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; max-width: 72ch; }
+  .reports li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: baseline; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  .reports a { font-family: var(--mono); font-size: 14px; white-space: nowrap; }
+  .reports em { font-style: normal; font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
   .oss { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; align-items: start; }
   .oss-text { display: grid; gap: 14px; max-width: 66ch; }
   .oss-text ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
@@ -495,6 +517,9 @@
     .pbs .pb:last-child { grid-column: span 2; }
     .award { grid-template-columns: 180px 1fr; }
     .alumni, .teaser-grid, .pilot, .pilot.clubs, .castore, .oss, .asparun { grid-template-columns: 1fr; }
+    .oss-card { grid-template-columns: auto minmax(0, 1fr); }
+    .oss-card-scipy { display: none; }
+    .reports li { grid-template-columns: 1fr; gap: 4px; }
     .asparun-photos { grid-template-rows: 150px 150px; }
     .bastille .asparun-photos { grid-template-rows: 360px; }
     .castore-logo { max-width: 240px; }
@@ -541,6 +566,7 @@
     <a class="mark" href="#ingenieur">Clément Basdevant</a>
     <nav aria-label="Sections">
       <a href="#ingenieur" data-nav="pro">Pro</a>
+      <a href="#contributions" data-nav="contrib">Contributions</a>
       <a href="#association" data-nav="asso">Association</a>
       <a href="#course" data-nav="perso">Sport &amp; loisirs</a>
       <a href="#contact">Contact</a>
@@ -623,33 +649,16 @@
     </div>
   </section>
 
-  <section id="dsp-props">
-    <div class="sec-head">
-      <span class="label">Projet open source · 2026</span>
-      <h2>dsp-props, tests par propriétés pour le traitement du signal</h2>
-    </div>
-    <div class="oss">
-      <div class="oss-text">
-        <div class="oss-brand"><img class="oss-logo" src="img/logo-dsp-props.svg" alt="Logo dsp-props"><div><strong>dsp-props</strong><span>Bibliothèque Python · licence BSD-3 · PyPI</span></div></div>
-        <p>dsp-props est une bibliothèque Python open source (licence BSD-3) dont je suis l'auteur. Au lieu de comparer la sortie d'un code à une référence avec une tolérance choisie à la main, elle vérifie des relations mathématiques qui doivent toujours tenir : linéarité, Parseval, théorème de décalage, inversibilité, causalité, invariance temporelle, invariance au découpage en blocs.</p>
-        <p>Les signaux de test sont générés pour piéger le code : impulsions, sinusoïdes hors grille, tons proches de Nyquist, longueurs 1, 2 ou premières, amplitudes extrêmes, blocs vides. La tolérance est dérivée d'un modèle d'erreur numérique, et chaque échec est rapporté avec un contre-exemple minimal.</p>
-        <ul>
-          <li>Version 0.1.2 sur PyPI (première publication le 14 octobre 2026), statut alpha.</li>
-          <li>123 tests internes ; 31 mutants (fautes injectées à la main), tous détectés ; CI sous Python 3.10, 3.12 et 3.13.</li>
-          <li>Appliquée à 46 cibles réelles de NumPy, SciPy, PyTorch, librosa et torchaudio.</li>
-        </ul>
-        <div class="links"><a href="https://github.com/clement-basdevant/dsp-props" target="_blank" rel="noopener">Code sur GitHub</a> <a href="https://pypi.org/project/dsp-props/" target="_blank" rel="noopener">PyPI</a> <a href="https://dsp-props.readthedocs.io/" target="_blank" rel="noopener">Documentation</a> <a href="https://doi.org/10.5281/zenodo.23437840" target="_blank" rel="noopener">DOI Zenodo</a></div>
-        <div class="stack"><span>Python</span><span>Hypothesis</span><span>NumPy</span><span>SciPy</span><span>Tests par propriétés</span><span>Traitement du signal</span></div>
+  <section id="open-source">
+    <a class="oss-card" href="#contributions">
+      <img class="oss-logo" src="img/logo-dsp-props.svg" alt="Logo dsp-props">
+      <div>
+        <span class="label">Open source · 2026</span>
+        <strong>dsp-props et une contribution fusionnée dans SciPy 2.0.0</strong>
+        <span>Ma bibliothèque de tests par propriétés pour le traitement du signal. Voir mes contributions →</span>
       </div>
-      <aside class="oss-pr">
-        <img class="oss-pr-logo" src="img/logo-scipy.svg" alt="Logo SciPy">
-        <span class="label">Contribution à SciPy · 23 octobre 2026</span>
-        <h3>Ma contribution fusionnée dans SciPy</h3>
-        <p>Avec dsp-props, j'ai trouvé un bug dans <code>scipy.signal</code>, que j'ai signalé (ticket #26406). Sur un bloc vide avec un état initial, <code>lfilter</code> renvoyait un état final non initialisé (filtre IIR) ou levait une erreur (FIR), et <code>sosfilt</code> levait une erreur, ce qui casse le traitement par blocs.</p>
-        <p>J'ai écrit le correctif (PR #26415). Il a été relu et fusionné par un mainteneur de SciPy le 23 octobre 2026, pour SciPy 2.0.0.</p>
-        <div class="links"><a href="https://github.com/scipy/scipy/pull/26415" target="_blank" rel="noopener">La PR #26415</a> <a href="https://github.com/scipy/scipy/issues/26406" target="_blank" rel="noopener">Le ticket #26406</a></div>
-      </aside>
-    </div>
+      <img class="oss-card-scipy" src="img/logo-scipy.svg" alt="SciPy">
+    </a>
   </section>
 
   <section id="experience">
@@ -812,8 +821,8 @@
       <div class="skill">
         <span class="skill-n">Data &amp; IA</span>
         <p>Prévision de séries temporelles, analyse et visualisation de données, optimisation.</p>
-        <div class="stack"><span>PyTorch</span><span>N-BEATS</span><span>pandas</span><span>SciPy</span><span>Matplotlib</span><span>Deep learning</span></div>
-        <small>Mis en œuvre : prévision de consommation au G2Elab, CaStore, solveurs chez CORYS, vision par ordinateur à SeaTech</small>
+        <div class="stack"><span>PyTorch</span><span>N-BEATS</span><span>pandas</span><span>NumPy</span><span>SciPy</span><span>Matplotlib</span><span>Deep learning</span><span>Traitement du signal</span></div>
+        <small>Mis en œuvre : prévision de consommation au G2Elab, CaStore, solveurs chez CORYS, vision par ordinateur à SeaTech, <a href="#contributions">dsp-props</a></small>
       </div>
       <div class="skill">
         <span class="skill-n">Interfaces &amp; UX</span>
@@ -829,9 +838,9 @@
       </div>
       <div class="skill">
         <span class="skill-n">Méthodes &amp; qualité</span>
-        <p>Travail en équipe, validation rigoureuse et documentation.</p>
-        <div class="stack"><span>Git</span><span>Agile · Scrum</span><span>Cycle en V</span><span>IEC 62304</span><span>Sphinx-doc</span></div>
-        <small>Mis en œuvre : équipe agile au G2Elab et chez Trixell, logiciel médical chez Trixell</small>
+        <p>Travail en équipe, tests rigoureux, documentation et publication open source.</p>
+        <div class="stack"><span>Git</span><span>Agile · Scrum</span><span>Cycle en V</span><span>IEC 62304</span><span>Tests par propriétés · Hypothesis</span><span>Tests de mutation</span><span>CI · GitHub Actions</span><span>Packaging PyPI</span><span>MkDocs · Sphinx</span></div>
+        <small>Mis en œuvre : équipe agile au G2Elab et chez Trixell, logiciel médical chez Trixell, <a href="#contributions">dsp-props et contribution à SciPy</a></small>
       </div>
     </div>
     <div class="radio">
@@ -1245,6 +1254,75 @@
 
   </main>
 
+  <main data-page="contrib">
+  <div class="sub-head">
+    <a class="back" href="#ingenieur">← Retour au profil pro</a>
+    <div class="sec-head" style="margin:0">
+      <span class="label">Open source · Python · traitement du signal</span>
+      <h1>Contributions</h1>
+      <p class="lead">Mes projets et contributions open source, autour de la fiabilité du code de traitement du signal en Python.</p>
+    </div>
+  </div>
+
+  <section id="dsp-props">
+    <div class="sec-head">
+      <span class="label">Projet open source · 2026</span>
+      <h2>dsp-props, tests par propriétés pour le traitement du signal</h2>
+    </div>
+    <div class="oss">
+      <div class="oss-text">
+        <div class="oss-brand"><img class="oss-logo" src="img/logo-dsp-props.svg" alt="Logo dsp-props"><div><strong>dsp-props</strong><span>Bibliothèque Python · licence BSD-3 · PyPI</span></div></div>
+        <p>dsp-props est une bibliothèque Python open source (licence BSD-3) dont je suis l'auteur. Au lieu de comparer la sortie d'un code à une référence avec une tolérance choisie à la main, elle vérifie des relations mathématiques qui doivent toujours tenir : linéarité, Parseval, théorème de décalage, inversibilité, causalité, invariance temporelle, invariance au découpage en blocs.</p>
+        <p>Les signaux de test sont générés pour piéger le code : impulsions, sinusoïdes hors grille, tons proches de Nyquist, longueurs 1, 2 ou premières, amplitudes extrêmes, blocs vides. La tolérance est dérivée d'un modèle d'erreur numérique, et chaque échec est rapporté avec un contre-exemple minimal.</p>
+        <ul>
+          <li>Version 0.1.2 sur PyPI (première publication le 14 octobre 2026), statut alpha.</li>
+          <li>123 tests internes ; 31 mutants (fautes injectées à la main), tous détectés ; CI sous Python 3.10, 3.12 et 3.13.</li>
+          <li>Appliquée à 46 cibles réelles de NumPy, SciPy, PyTorch, librosa et torchaudio.</li>
+        </ul>
+        <div class="links"><a href="https://github.com/clement-basdevant/dsp-props" target="_blank" rel="noopener">Code sur GitHub</a> <a href="https://pypi.org/project/dsp-props/" target="_blank" rel="noopener">PyPI</a> <a href="https://dsp-props.readthedocs.io/" target="_blank" rel="noopener">Documentation</a> <a href="https://doi.org/10.5281/zenodo.23437840" target="_blank" rel="noopener">DOI Zenodo</a></div>
+        <div class="stack"><span>Python</span><span>Hypothesis</span><span>NumPy</span><span>SciPy</span><span>Tests par propriétés</span><span>Traitement du signal</span></div>
+      </div>
+      <div class="oss-side">
+        <div class="oss-use">
+          <span class="label">Comment l'utiliser</span>
+          <p>Un décorateur par opérateur à tester, puis <code>dp.verify(...)</code> ; ou en ligne de commande, <code>dsp-props check</code>.</p>
+        </div>
+        <figure class="oss-fig">
+          <a href="https://raw.githubusercontent.com/clement-basdevant/dsp-props/main/docs/figures/error_profile.png" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/clement-basdevant/dsp-props/main/docs/figures/error_profile.png" alt="Graphique de l'erreur relative de la FFT en fonction de N, NumPy contre PyTorch" loading="lazy"></a>
+          <figcaption class="credits">Erreur relative de la FFT en fonction de N, NumPy contre PyTorch · figure de la documentation de dsp-props</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="scipy">
+    <div class="sec-head with-logo">
+      <img class="logo" src="img/logo-scipy.svg" alt="SciPy" style="width:72px;padding:8px">
+      <div>
+        <span class="label">Contribution à SciPy · 23 octobre 2026</span>
+        <h2>Ma contribution fusionnée dans SciPy</h2>
+      </div>
+    </div>
+    <ol class="steps">
+        <li><strong>Le bug</strong><p>Avec dsp-props, j'ai repéré que <code>scipy.signal.lfilter</code> et <code>sosfilt</code> géraient mal un bloc vide avec un état initial : <code>lfilter</code> renvoyait un état final non initialisé (filtre IIR) ou levait une erreur (FIR), et <code>sosfilt</code> levait une erreur, ce qui casse le traitement par blocs. Je l'ai signalé dans le <a href="https://github.com/scipy/scipy/issues/26406" target="_blank" rel="noopener">ticket #26406</a>. Le cas <code>sosfilt</code> était nouveau ; le cas <code>lfilter</code> rejoignait un <a href="https://github.com/scipy/scipy/issues/22571" target="_blank" rel="noopener">ticket existant (#22571)</a>.</p></li>
+        <li><strong>Le correctif</strong><p>J'ai écrit la <a href="https://github.com/scipy/scipy/pull/26415" target="_blank" rel="noopener">PR #26415</a>, « BUG: signal.lfilter, signal.sosfilt: handle all empty inputs ».</p></li>
+        <li><strong>La fusion</strong><p>Elle a été relue puis fusionnée par un mainteneur de SciPy le 23 octobre 2026, pour SciPy 2.0.0.</p></li>
+    </ol>
+  </section>
+
+  <section id="signalements">
+    <div class="sec-head">
+      <span class="label">Tickets ouverts</span>
+      <h2>Autres signalements</h2>
+    </div>
+    <p class="lead-sm">D'autres tickets que j'ai ouverts, en attente de réponse des mainteneurs.</p>
+    <ul class="reports">
+        <li><a href="https://github.com/scipy/scipy/issues/26417" target="_blank" rel="noopener">scipy/scipy#26417</a><span><code>scipy.signal.tf2sos</code> supprime les retards purs.</span><em>Ticket ouvert</em></li>
+        <li><a href="https://github.com/pytorch/audio/issues/4238" target="_blank" rel="noopener">pytorch/audio#4238</a><span><code>deemphasis</code> écrête sa sortie à [-1, 1].</span><em>Ticket ouvert</em></li>
+    </ul>
+  </section>
+  </main>
+
   <main data-page="asso">
   <div class="sub-head">
     <a class="back" href="#ingenieur">← Retour au profil pro</a>
@@ -1358,8 +1436,8 @@
 <script>
 (function () {
   // Pages & tabs, driven by the URL hash
-  const ROUTES = { ingenieur: 'pro', ski: 'pro', course: 'perso', parapente: 'perso', association: 'asso' };
-  const DEFAULT_TAB = { pro: 'ingenieur', perso: 'course', asso: 'association' };
+  const ROUTES = { ingenieur: 'pro', ski: 'pro', course: 'perso', parapente: 'perso', association: 'asso', contributions: 'contrib' };
+  const DEFAULT_TAB = { pro: 'ingenieur', perso: 'course', asso: 'association', contrib: 'contributions' };
   let current = null;
 
   function route() {
@@ -1367,8 +1445,9 @@
     if (h && !ROUTES[h]) {            // plain anchor such as #contact
       if (!current) show('pro', 'ingenieur', false);
       const el = document.getElementById(h);
+      const pg = el && el.closest('[data-page]');
       const tab = el && el.closest('[data-tab]');
-      if (tab) show(tab.closest('[data-page]').dataset.page, tab.dataset.tab, false);
+      if (pg) show(pg.dataset.page, tab ? tab.dataset.tab : DEFAULT_TAB[pg.dataset.page], false);
       if (el) el.scrollIntoView();
       return;
     }
