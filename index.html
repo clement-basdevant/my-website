@@ -378,6 +378,17 @@
   /* Pollutec */
   .event { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: start; }
   .event-text { display: grid; gap: 14px; max-width: 62ch; }
+  .oss-highlight { display: grid; gap: 4px; margin-top: 12px; padding: 16px 20px; border: 1px solid var(--measure); border-left-width: 4px; border-radius: 14px; background: var(--surface); text-decoration: none; color: var(--ink); transition: transform .15s; }
+  .oss-highlight:hover { transform: translateY(-2px); }
+  .oss-highlight strong { font-family: var(--display); font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
+  .oss-highlight span:last-child { color: var(--muted); font-size: 15px; }
+  .oss { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+  .oss-text { display: grid; gap: 14px; max-width: 66ch; }
+  .oss-text ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+  .oss-text li::marker { color: var(--measure); }
+  .oss-pr { display: grid; gap: 12px; padding: 20px 22px; border: 1px solid var(--measure); border-left-width: 4px; border-radius: 14px; background: var(--surface); }
+  .oss-pr h3 { font-size: 22px; }
+  .oss-pr code, .oss-text code { font-family: var(--mono); font-size: .92em; }
   .castore { display: grid; grid-template-columns: 260px 1fr; gap: 28px; align-items: start; }
   .castore-logo { display: block; width: 100%; padding: 14px; border-radius: 14px; background: #fff; border: 1px solid var(--line); }
   .castore-text { display: grid; gap: 14px; max-width: 66ch; }
@@ -479,7 +490,7 @@
     .pbs { grid-template-columns: repeat(2, 1fr); }
     .pbs .pb:last-child { grid-column: span 2; }
     .award { grid-template-columns: 180px 1fr; }
-    .alumni, .teaser-grid, .pilot, .pilot.clubs, .castore, .asparun { grid-template-columns: 1fr; }
+    .alumni, .teaser-grid, .pilot, .pilot.clubs, .castore, .oss, .asparun { grid-template-columns: 1fr; }
     .asparun-photos { grid-template-rows: 150px 150px; }
     .bastille .asparun-photos { grid-template-rows: 360px; }
     .castore-logo { max-width: 240px; }
@@ -561,6 +572,12 @@
     </a>
   </nav>
 
+  <a class="oss-highlight" href="#dsp-props">
+    <span class="label">Open source · SciPy</span>
+    <strong>Ma contribution fusionnée dans SciPy 2.0.0</strong>
+    <span>Un bug trouvé avec dsp-props, ma bibliothèque de tests par propriétés pour le traitement du signal →</span>
+  </a>
+
   <div data-tab="ingenieur">
   <header class="track-head">
     <span class="label">Métier principal · G2Elab, Grenoble</span>
@@ -605,6 +622,33 @@
         <p>La plateforme est pensée dès l'origine pour le RGPD, le Data Act, l'AI Act et NIS2. Elle vise les communautés énergétiques, les bailleurs sociaux et les fournisseurs d'énergie, et doit supporter plus de 100 000 capteurs.</p>
         <div class="stack"><span>Python</span><span>PyTorch</span><span>TimescaleDB</span><span>Kafka</span><span>API REST</span><span>UI/UX</span></div>
       </div>
+    </div>
+  </section>
+
+  <section id="dsp-props">
+    <div class="sec-head">
+      <span class="label">Projet open source · 2026</span>
+      <h2>dsp-props, tests par propriétés pour le traitement du signal</h2>
+    </div>
+    <div class="oss">
+      <div class="oss-text">
+        <p>dsp-props est une bibliothèque Python open source (licence BSD-3) dont je suis l'auteur. Au lieu de comparer la sortie d'un code à une référence avec une tolérance choisie à la main, elle vérifie des relations mathématiques qui doivent toujours tenir : linéarité, Parseval, théorème de décalage, inversibilité, causalité, invariance temporelle, invariance au découpage en blocs.</p>
+        <p>Les signaux de test sont générés pour piéger le code : impulsions, sinusoïdes hors grille, tons proches de Nyquist, longueurs 1, 2 ou premières, amplitudes extrêmes, blocs vides. La tolérance est dérivée d'un modèle d'erreur numérique, et chaque échec est rapporté avec un contre-exemple minimal.</p>
+        <ul>
+          <li>Version 0.1.2 sur PyPI (première publication le 14 octobre 2026), statut alpha.</li>
+          <li>123 tests internes ; 31 mutants (fautes injectées à la main), tous détectés ; CI sous Python 3.10, 3.12 et 3.13.</li>
+          <li>Appliquée à 46 cibles réelles de NumPy, SciPy, PyTorch, librosa et torchaudio.</li>
+        </ul>
+        <div class="links"><a href="https://github.com/clement-basdevant/dsp-props" target="_blank" rel="noopener">Code sur GitHub</a> <a href="https://pypi.org/project/dsp-props/" target="_blank" rel="noopener">PyPI</a> <a href="https://dsp-props.readthedocs.io/" target="_blank" rel="noopener">Documentation</a> <a href="https://doi.org/10.5281/zenodo.23437840" target="_blank" rel="noopener">DOI Zenodo</a></div>
+        <div class="stack"><span>Python</span><span>Hypothesis</span><span>NumPy</span><span>SciPy</span><span>Tests par propriétés</span><span>Traitement du signal</span></div>
+      </div>
+      <aside class="oss-pr">
+        <span class="label">Contribution à SciPy · 23 octobre 2026</span>
+        <h3>Ma contribution fusionnée dans SciPy</h3>
+        <p>Avec dsp-props, j'ai trouvé un bug dans <code>scipy.signal</code>, que j'ai signalé (ticket #26406). Sur un bloc vide avec un état initial, <code>lfilter</code> renvoyait un état final non initialisé (filtre IIR) ou levait une erreur (FIR), et <code>sosfilt</code> levait une erreur, ce qui casse le traitement par blocs.</p>
+        <p>J'ai écrit le correctif (PR #26415). Il a été relu et fusionné par un mainteneur de SciPy le 23 octobre 2026, pour SciPy 2.0.0.</p>
+        <div class="links"><a href="https://github.com/scipy/scipy/pull/26415" target="_blank" rel="noopener">La PR #26415</a> <a href="https://github.com/scipy/scipy/issues/26406" target="_blank" rel="noopener">Le ticket #26406</a></div>
+      </aside>
     </div>
   </section>
 
@@ -1323,6 +1367,8 @@
     if (h && !ROUTES[h]) {            // plain anchor such as #contact
       if (!current) show('pro', 'ingenieur', false);
       const el = document.getElementById(h);
+      const tab = el && el.closest('[data-tab]');
+      if (tab) show(tab.closest('[data-page]').dataset.page, tab.dataset.tab, false);
       if (el) el.scrollIntoView();
       return;
     }
