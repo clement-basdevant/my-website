@@ -308,7 +308,11 @@
   .volunteer .body { display: grid; gap: 12px; max-width: 58ch; }
   .volunteer h3 { font-size: 24px; }
   .volunteer ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
-  .volunteer .yt iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
+  .volunteer .yt a { position: relative; display: block; }
+  .volunteer .yt img { display: block; width: 100%; max-height: none; aspect-ratio: 16 / 9; object-fit: cover; }
+  .yt-play { position: absolute; left: 50%; top: 50%; width: 68px; height: 48px; margin: -24px 0 0 -34px; border-radius: 14px; background: rgba(15,15,15,.82); transition: background .15s; }
+  .yt-play::after { content: ""; position: absolute; left: 27px; top: 14px; border-style: solid; border-width: 10px 0 10px 17px; border-color: transparent transparent transparent #fff; }
+  .volunteer .yt a:hover .yt-play { background: #f00; }
   .volunteer li::marker { color: var(--measure); }
   .post { display: grid; gap: 12px; padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); text-decoration: none; color: var(--ink); transition: border-color .15s; }
   .post:hover { border-color: var(--measure); }
@@ -1303,7 +1307,7 @@
     </div>
 
     <div class="volunteer">
-      <figure class="yt"><iframe src="https://www.youtube-nocookie.com/embed/d7HZb4dn1dA" title="SIV course 2026 – Club St Hil'Air" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></figure>
+      <figure class="yt"><a href="https://www.youtube.com/watch?v=d7HZb4dn1dA" target="_blank" rel="noopener" aria-label="Watch the SIV course video on YouTube"><img src="../img/siv-video.webp" alt="" loading="lazy"><span class="yt-play" aria-hidden="true"></span></a></figure>
       <div class="body">
         <span class="label">Club St Hil'Air · September 2026</span>
         <h3>SIV course on video</h3>
@@ -1502,7 +1506,7 @@ dp.verify(...)
   <section id="benevolat" style="padding-top:56px">
     <div class="sec-head"><span class="label">Other volunteering</span><h2>Club St Hil'Air</h2></div>
     <div class="volunteer">
-      <figure class="yt"><iframe src="https://www.youtube-nocookie.com/embed/d7HZb4dn1dA" title="SIV course 2026 – Club St Hil'Air" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></figure>
+      <figure class="yt"><a href="https://www.youtube.com/watch?v=d7HZb4dn1dA" target="_blank" rel="noopener" aria-label="Watch the SIV course video on YouTube"><img src="../img/siv-video.webp" alt="" loading="lazy"><span class="yt-play" aria-hidden="true"></span></a></figure>
       <div class="body">
         <span class="label">Club St Hil'Air · September 2026</span>
         <h3>SIV course on video</h3>
