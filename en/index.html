@@ -402,6 +402,72 @@
   .reports li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: baseline; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
   .reports a { font-family: var(--mono); font-size: 14px; white-space: nowrap; }
   .reports em { font-style: normal; font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .repo, .pr { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); overflow: hidden; }
+  .repo-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px 16px; align-items: center; padding: 22px 24px; border-bottom: 1px solid var(--line); }
+  .repo-logo { width: 56px; height: 56px; border-radius: 14px; }
+  .repo-id { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .repo-id a { font-family: var(--mono); font-size: 22px; color: var(--measure); text-decoration: none; }
+  .repo-id a span { color: var(--muted); }
+  .repo-id a:hover b { text-decoration: underline; }
+  .pill { display: inline-block; font-family: var(--mono); font-size: 12px; padding: 2px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
+  .pill.green { color: #1a7f37; border-color: #1a7f37; }
+  .repo-actions, .pr-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; }
+  .gh-btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border-radius: 10px; border: 1px solid var(--line); background: var(--ground); color: var(--ink); font: 500 15px var(--body); text-decoration: none; transition: border-color .15s, transform .15s; }
+  .gh-btn svg { width: 18px; height: 18px; flex: none; }
+  .gh-btn:hover { border-color: var(--measure); transform: translateY(-1px); }
+  .gh-btn.primary { background: var(--measure); border-color: var(--measure); color: #fff; }
+  :root[data-theme="dark"] .gh-btn.primary { color: #0E161B; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .gh-btn.primary { color: #0E161B; } }
+  .repo-body { display: grid; grid-template-columns: minmax(0, 1fr) 280px; }
+  .readme { padding: 24px; display: grid; gap: 16px; border-right: 1px solid var(--line); min-width: 0; }
+  .readme h2 { font-size: clamp(22px, 2.6vw, 28px); letter-spacing: -.01em; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .readme h3 { font-size: 19px; }
+  .shields { display: flex; flex-wrap: wrap; gap: 6px; }
+  .shield { display: inline-flex; font-family: var(--mono); font-size: 12px; border-radius: 5px; overflow: hidden; }
+  .shield span { background: #555; color: #fff; padding: 3px 7px; }
+  .shield b { background: #3e8e7e; color: #fff; padding: 3px 7px; font-weight: 500; }
+  .install { display: flex; align-items: center; gap: 10px; padding: 10px 12px 10px 16px; border-radius: 10px; background: #0e161b; color: #e6edf3; font-family: var(--mono); font-size: 15px; }
+  .install code { flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap; }
+  .install .p, .code .p { color: #7fd1c7; user-select: none; }
+  .install button { font: 500 13px var(--body); padding: 6px 12px; border-radius: 8px; border: 1px solid #3b4a52; background: #1b2a31; color: #e6edf3; cursor: pointer; }
+  .code { margin: 0; padding: 14px 16px; border-radius: 10px; background: #0e161b; color: #e6edf3; font-family: var(--mono); font-size: 14px; line-height: 1.6; overflow-x: auto; }
+  .code .c { color: #8b9aa3; }
+  .repo-side { padding: 24px 22px; display: grid; gap: 22px; align-content: start; }
+  .repo-side h3 { font-size: 16px; margin-bottom: 8px; }
+  .repo-side p, .repo-side small { color: var(--muted); font-size: 14px; }
+  .side-links, .side-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; font-size: 14px; }
+  .side-links li { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .side-links svg { width: 16px; height: 16px; flex: none; color: var(--muted); }
+  .side-links a { color: var(--measure); font-weight: 600; overflow-wrap: anywhere; }
+  .side-list li { color: var(--muted); padding-left: 16px; position: relative; }
+  .side-list li::before { content: "✓"; position: absolute; left: 0; color: #1a7f37; font-weight: 700; }
+  .topics { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .topic { font-family: var(--mono); font-size: 12px; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--measure) 14%, transparent); color: var(--measure); }
+  #scipy > .label { display: block; margin-bottom: 12px; }
+  .pr { padding: 24px; display: grid; gap: 22px; }
+  .pr-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: start; }
+  .pr-logo { width: 52px; height: 52px; }
+  .pr-repo { font-family: var(--mono); font-size: 14px; color: var(--muted); text-decoration: none; }
+  .pr-head h2 { font-size: clamp(20px, 2.4vw, 26px); letter-spacing: -.01em; margin: 4px 0 10px; }
+  .pr-head h2 a { color: var(--ink); text-decoration: none; }
+  .pr-head h2 a:hover { color: var(--measure); text-decoration: underline; }
+  .pr-num { color: var(--muted); font-weight: 400; }
+  .pr-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; }
+  .state { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; color: #fff; font: 600 14px var(--body); }
+  .state svg { width: 16px; height: 16px; }
+  .state.merged { background: #8250df; }
+  .pr-actions { padding-top: 4px; }
+  .issues { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); overflow: hidden; max-width: 820px; }
+  .issue { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; padding: 16px 18px; }
+  .issue + .issue { border-top: 1px solid var(--line); }
+  .issue-state { display: inline-flex; align-items: center; gap: 5px; height: fit-content; padding: 3px 10px; border-radius: 999px; background: #1a7f37; color: #fff; font: 600 13px var(--body); }
+  .issue-state svg { width: 14px; height: 14px; }
+  .issue div { display: grid; gap: 4px; }
+  .issue-title { font-weight: 600; color: var(--ink); text-decoration: none; }
+  .issue-title:hover { color: var(--measure); text-decoration: underline; }
+  .issue small { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .issue p { color: var(--muted); font-size: 14px; }
+  .issue code, .pr code, .readme code { font-family: var(--mono); font-size: .92em; }
   .oss { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; align-items: start; }
   .oss-text { display: grid; gap: 14px; max-width: 66ch; }
   .oss-text ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
@@ -525,6 +591,10 @@
     .oss-card .oss-logo { width: 56px; height: 56px; border-radius: 14px; }
     .oss-card strong { font-size: 20px; }
     .reports li { grid-template-columns: 1fr; gap: 4px; }
+    .repo-body { grid-template-columns: 1fr; }
+    .readme { border-right: 0; border-bottom: 1px solid var(--line); }
+    .repo-id a { font-size: 18px; }
+    .issue { grid-template-columns: 1fr; }
     .asparun-photos { grid-template-rows: 150px 150px; }
     .bastille .asparun-photos { grid-template-rows: 360px; }
     .castore-logo { max-width: 240px; }
@@ -1270,49 +1340,88 @@
   </div>
 
   <section id="dsp-props">
-    <div class="sec-head">
-      <span class="label">Open-source project · 2026</span>
-      <h2>dsp-props, property-based testing for signal processing</h2>
-    </div>
-    <div class="oss">
-      <div class="oss-text">
-        <div class="oss-brand"><img class="oss-logo" src="../img/logo-dsp-props.svg" alt="Logo dsp-props"><div><strong>dsp-props</strong><span>Python library · BSD-3 licence · PyPI</span></div></div>
-        <p>dsp-props is an open-source Python library (BSD-3 licence) that I wrote. Instead of comparing a program's output with a reference under a hand-picked tolerance, it checks mathematical relations that must always hold: linearity, Parseval, the shift theorem, invertibility, causality, time invariance and invariance to block splitting.</p>
-        <p>Test signals are generated to trap the code: impulses, off-grid sinusoids, tones close to Nyquist, lengths of 1, 2 or prime numbers, extreme amplitudes, empty blocks. The tolerance is derived from a numerical error model, and every failure is reported with a minimal counterexample.</p>
-        <ul>
-          <li>Version 0.1.2 on PyPI (first release on 14 October 2026), alpha status.</li>
-          <li>123 internal tests; 31 mutants (hand-injected faults), all detected; CI on Python 3.10, 3.12 and 3.13.</li>
-          <li>Applied to 46 real targets from NumPy, SciPy, PyTorch, librosa and torchaudio.</li>
-        </ul>
-        <div class="links"><a href="https://github.com/clement-basdevant/dsp-props" target="_blank" rel="noopener">Code on GitHub</a> <a href="https://pypi.org/project/dsp-props/" target="_blank" rel="noopener">PyPI</a> <a href="https://dsp-props.readthedocs.io/" target="_blank" rel="noopener">Documentation</a> <a href="https://doi.org/10.5281/zenodo.23437840" target="_blank" rel="noopener">Zenodo DOI</a></div>
-        <div class="stack"><span>Python</span><span>Hypothesis</span><span>NumPy</span><span>SciPy</span><span>Property-based testing</span><span>Signal processing</span></div>
-      </div>
-      <div class="oss-side">
-        <div class="oss-use">
-          <span class="label">How to use it</span>
-          <p>One decorator per operator under test, then <code>dp.verify(...)</code>; or from the command line, <code>dsp-props check</code>.</p>
+    <article class="repo">
+      <header class="repo-head">
+        <img class="repo-logo" src="../img/logo-dsp-props.svg" alt="Logo dsp-props">
+        <div class="repo-id">
+          <a href="https://github.com/clement-basdevant/dsp-props" target="_blank" rel="noopener"><span>clement-basdevant /</span> <b>dsp-props</b></a>
+          <span class="pill">Public</span>
         </div>
-        <figure class="oss-fig">
-          <a href="../img/dsp-error-profile.webp" target="_blank" rel="noopener"><img src="../img/dsp-error-profile.webp" alt="Plot of the relative FFT error as a function of N, NumPy against PyTorch" loading="lazy"></a>
-          <figcaption class="credits">Relative FFT error as a function of N, NumPy against PyTorch · figure from the dsp-props documentation</figcaption>
-        </figure>
+        <nav class="repo-actions" aria-label="dsp-props">
+          <a class="gh-btn primary" href="https://github.com/clement-basdevant/dsp-props" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg><span>Code on GitHub</span></a>
+          <a class="gh-btn" href="https://pypi.org/project/dsp-props/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1 2 6v12l10 5 10-5V6L12 1zm0 2.2 7.6 3.8L12 10.8 4.4 7 12 3.2zM4 8.6l7 3.5v8.7l-7-3.5V8.6zm9 12.2v-8.7l7-3.5v8.7l-7 3.5z"/></svg><span>PyPI</span></a>
+          <a class="gh-btn" href="https://dsp-props.readthedocs.io/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 3h7a3 3 0 0 1 2 .8A3 3 0 0 1 15 3h5a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1h-6a2 2 0 0 0-2 2h-2a2 2 0 0 0-2-2H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v13h4c.7 0 1.4.2 2 .5V6a1 1 0 0 0-1-1H5zm14 0h-4a1 1 0 0 0-1 1v12.5c.6-.3 1.3-.5 2-.5h3V5z"/></svg><span>Documentation</span></a>
+          <a class="gh-btn" href="https://doi.org/10.5281/zenodo.23437840" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><text x="12" y="15.5" text-anchor="middle" font-size="8" font-weight="700" fill="currentColor" font-family="sans-serif">DOI</text></svg><span>Zenodo DOI</span></a>
+        </nav>
+      </header>
+      <div class="repo-body">
+        <div class="readme">
+          <h2>dsp-props: property-based testing for signal processing</h2>
+          <div class="shields"><span class="shield"><span>pypi</span><b>v0.1.2</b></span><span class="shield"><span>license</span><b>BSD-3</b></span><span class="shield"><span>python</span><b>3.10 · 3.12 · 3.13</b></span><span class="shield"><span>status</span><b>alpha</b></span><span class="shield"><span>tests</span><b>123</b></span><span class="shield"><span>mutants</span><b>31 / 31 caught</b></span></div>
+          <div class="install"><span class="p">$</span><code id="pip-cmd">pip install dsp-props</code><button type="button" data-copy="pip-cmd" data-label="Copy">Copy</button></div>
+          <p>dsp-props is an open-source Python library that I wrote. Instead of comparing a program's output with a reference under a hand-picked tolerance, it checks mathematical relations that must always hold: linearity, Parseval, the shift theorem, invertibility, causality, time invariance and invariance to block splitting.</p>
+          <p>Test signals are generated to trap the code: impulses, off-grid sinusoids, tones close to Nyquist, lengths of 1, 2 or prime numbers, extreme amplitudes, empty blocks. The tolerance is derived from a numerical error model, and every failure is reported with a minimal counterexample.</p>
+          <h3>Usage</h3>
+          <pre class="code"><span class="c"># one decorator per operator under test, then</span>
+dp.verify(...)
+
+<span class="c"># or from the command line</span>
+<span class="p">$</span> dsp-props check</pre>
+          <figure class="oss-fig">
+            <a href="../img/dsp-error-profile.webp" target="_blank" rel="noopener"><img src="../img/dsp-error-profile.webp" alt="Plot of the relative FFT error as a function of N, NumPy against PyTorch" loading="lazy"></a>
+            <figcaption class="credits">Relative FFT error as a function of N, NumPy against PyTorch · figure from the documentation</figcaption>
+          </figure>
+        </div>
+        <aside class="repo-side">
+          <div>
+            <h3>About</h3>
+            <p>Property-based testing for signal processing, built on Hypothesis.</p>
+            <ul class="side-links">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 3h7a3 3 0 0 1 2 .8A3 3 0 0 1 15 3h5a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1h-6a2 2 0 0 0-2 2h-2a2 2 0 0 0-2-2H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v13h4c.7 0 1.4.2 2 .5V6a1 1 0 0 0-1-1H5zm14 0h-4a1 1 0 0 0-1 1v12.5c.6-.3 1.3-.5 2-.5h3V5z"/></svg><a href="https://dsp-props.readthedocs.io/" target="_blank" rel="noopener">dsp-props.readthedocs.io</a></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1 2 6v12l10 5 10-5V6L12 1zm0 2.2 7.6 3.8L12 10.8 4.4 7 12 3.2zM4 8.6l7 3.5v8.7l-7-3.5V8.6zm9 12.2v-8.7l7-3.5v8.7l-7 3.5z"/></svg><a href="https://pypi.org/project/dsp-props/" target="_blank" rel="noopener">pypi.org/project/dsp-props</a></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><text x="12" y="15.5" text-anchor="middle" font-size="8" font-weight="700" fill="currentColor" font-family="sans-serif">DOI</text></svg><a href="https://doi.org/10.5281/zenodo.23437840" target="_blank" rel="noopener">10.5281/zenodo.23437840</a></li>
+            </ul>
+            <div class="topics"><span class="topic">python</span><span class="topic">hypothesis</span><span class="topic">property-based-testing</span><span class="topic">signal-processing</span><span class="topic">numpy</span><span class="topic">scipy</span></div>
+          </div>
+          <div>
+            <h3>Release</h3>
+            <p><b>v0.1.2</b> <span class="pill green">latest</span></p>
+            <small>First release: 0.1.0, on 14 October 2026</small>
+          </div>
+          <div>
+            <h3>Quality</h3>
+            <ul class="side-list"><li>123 internal tests</li><li>31 injected mutants, all caught</li><li>CI on Python 3.10, 3.12 and 3.13</li></ul>
+          </div>
+          <div>
+            <h3>Applied to</h3>
+            <p>46 real targets from NumPy, SciPy, PyTorch, librosa and torchaudio.</p>
+          </div>
+        </aside>
       </div>
-    </div>
+    </article>
   </section>
 
   <section id="scipy">
-    <div class="sec-head with-logo">
-      <img class="logo" src="../img/logo-scipy.svg" alt="SciPy" style="width:72px;padding:8px">
-      <div>
-        <span class="label">SciPy contribution · 23 October 2026</span>
-        <h2>My contribution merged into SciPy</h2>
+    <span class="label">SciPy contribution</span>
+    <article class="pr">
+      <header class="pr-head">
+        <img src="../img/logo-scipy.svg" alt="SciPy" class="pr-logo">
+        <div>
+          <a class="pr-repo" href="https://github.com/scipy/scipy" target="_blank" rel="noopener">scipy / scipy</a>
+          <h2><a href="https://github.com/scipy/scipy/pull/26415" target="_blank" rel="noopener">BUG: signal.lfilter, signal.sosfilt: handle all empty inputs</a> <span class="pr-num">#26415</span></h2>
+          <div class="pr-meta"><span class="state merged"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M5.45 5.15A2.25 2.25 0 1 0 4 5.95v4.1a2.25 2.25 0 1 0 1.5 0V8.1c.9.95 2.2 1.55 3.6 1.6h.4a2.25 2.25 0 1 0 0-1.5h-.4a3.75 3.75 0 0 1-3.65-3.05zM4.75 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm0 9.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm6.5-3.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/></svg>Merged</span><span>Written by <a href="https://github.com/clement-basdevant" target="_blank" rel="noopener">clement-basdevant</a> · reviewed and merged by a SciPy maintainer on 23 October 2026 · milestone <b>2.0.0</b></span></div>
+        </div>
+      </header>
+      <ol class="steps">
+          <li><strong>The bug</strong><p>With dsp-props, I spotted that <code>scipy.signal.lfilter</code> and <code>sosfilt</code> mishandled an empty block with an initial state: <code>lfilter</code> returned an uninitialised final state (IIR filter) or raised an error (FIR), and <code>sosfilt</code> raised an error, which breaks block processing. I reported it in <a href="https://github.com/scipy/scipy/issues/26406" target="_blank" rel="noopener">issue #26406</a>. The <code>sosfilt</code> case was new; the <code>lfilter</code> case matched an <a href="https://github.com/scipy/scipy/issues/22571" target="_blank" rel="noopener">existing issue (#22571)</a>.</p></li>
+          <li><strong>The fix</strong><p>I wrote <a href="https://github.com/scipy/scipy/pull/26415" target="_blank" rel="noopener">PR #26415</a> so that both functions handle all empty inputs.</p></li>
+          <li><strong>The merge</strong><p>Reviewed and merged by a maintainer on 23 October 2026, it ships with SciPy 2.0.0.</p></li>
+      </ol>
+      <div class="pr-actions">
+        <a class="gh-btn primary" href="https://github.com/scipy/scipy/pull/26415" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg><span>View PR #26415</span></a>
+        <a class="gh-btn" href="https://github.com/scipy/scipy/issues/26406" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg><span>Issue #26406</span></a>
       </div>
-    </div>
-    <ol class="steps">
-        <li><strong>The bug</strong><p>With dsp-props, I spotted that <code>scipy.signal.lfilter</code> and <code>sosfilt</code> mishandled an empty block with an initial state: <code>lfilter</code> returned an uninitialised final state (IIR filter) or raised an error (FIR), and <code>sosfilt</code> raised an error, which breaks block processing. I reported it in <a href="https://github.com/scipy/scipy/issues/26406" target="_blank" rel="noopener">issue #26406</a>. The <code>sosfilt</code> case was new; the <code>lfilter</code> case matched an <a href="https://github.com/scipy/scipy/issues/22571" target="_blank" rel="noopener">existing issue (#22571)</a>.</p></li>
-        <li><strong>The fix</strong><p>I wrote <a href="https://github.com/scipy/scipy/pull/26415" target="_blank" rel="noopener">PR #26415</a>, “BUG: signal.lfilter, signal.sosfilt: handle all empty inputs”.</p></li>
-        <li><strong>The merge</strong><p>It was reviewed and merged by a SciPy maintainer on 23 October 2026, for SciPy 2.0.0.</p></li>
-    </ol>
+    </article>
   </section>
 
   <section id="signalements">
@@ -1321,9 +1430,23 @@
       <h2>Other reports</h2>
     </div>
     <p class="lead-sm">Other issues I opened, awaiting a reply from the maintainers.</p>
-    <ul class="reports">
-        <li><a href="https://github.com/scipy/scipy/issues/26417" target="_blank" rel="noopener">scipy/scipy#26417</a><span><code>scipy.signal.tf2sos</code> drops pure delays.</span><em>Open issue</em></li>
-        <li><a href="https://github.com/pytorch/audio/issues/4238" target="_blank" rel="noopener">pytorch/audio#4238</a><span><code>deemphasis</code> clips its output to [-1, 1].</span><em>Open issue</em></li>
+    <ul class="issues">
+      <li class="issue">
+        <span class="issue-state"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/><path fill="currentColor" d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0z"/></svg>Open</span>
+        <div>
+          <a class="issue-title" href="https://github.com/scipy/scipy/issues/26417" target="_blank" rel="noopener">BUG: signal.tf2sos drops pure delays</a>
+          <small>scipy/scipy#26417 · opened by clement-basdevant</small>
+          <p><code>tf2sos</code> drops pure delays.</p>
+        </div>
+      </li>
+      <li class="issue">
+        <span class="issue-state"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/><path fill="currentColor" d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0z"/></svg>Open</span>
+        <div>
+          <a class="issue-title" href="https://github.com/pytorch/audio/issues/4238" target="_blank" rel="noopener">deemphasis silently clamps output to [-1, 1], so it is not the inverse of preemphasis</a>
+          <small>pytorch/audio#4238 · opened by clement-basdevant</small>
+          <p><code>deemphasis</code> clips its output to [-1, 1].</p>
+        </div>
+      </li>
     </ul>
   </section>
   </main>
