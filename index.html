@@ -391,6 +391,10 @@
   .oss-card .oss-logo { width: 84px; height: 84px; border-radius: 18px; }
   .oss-card div { gap: 6px; }
   .oss-card-scipy { width: 56px; height: 56px; }
+  .oss-card .oss-card-p { color: var(--muted); font-size: 15px; max-width: 72ch; margin: 2px 0; }
+  .oss-card .oss-card-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .oss-card .oss-card-chips span { font-family: var(--mono); font-size: 12px; color: var(--ink); padding: 3px 9px; border-radius: 6px; background: var(--chip); }
+  .oss-card .oss-card-cta { color: var(--measure); font-weight: 600; font-size: 15px; margin-top: 4px; }
   .oss-side { display: grid; gap: 16px; }
   .oss-use { display: grid; gap: 8px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
   .oss-use code, .steps code, .reports code { font-family: var(--mono); font-size: .92em; }
@@ -735,7 +739,9 @@
       <div>
         <span class="label">Open source · 2026</span>
         <strong>dsp-props et une contribution fusionnée dans SciPy 2.0.0</strong>
-        <span>Ma bibliothèque de tests par propriétés pour le traitement du signal. Voir mes contributions →</span>
+        <p class="oss-card-p">Ma bibliothèque Python qui vérifie automatiquement les propriétés mathématiques d'un code de traitement du signal (linéarité, Parseval, inversibilité…), publiée sur PyPI et appliquée à 46 cibles réelles. Avec elle, j'ai trouvé un bug dans SciPy, et le correctif que j'ai écrit a été fusionné pour la version 2.0.0.</p>
+        <div class="oss-card-chips"><span>PyPI v0.1.2</span><span>PR #26415 fusionnée</span><span>Python · Hypothesis</span></div>
+        <span class="oss-card-cta">Voir mes contributions →</span>
       </div>
       <img class="oss-card-scipy" src="img/logo-scipy.svg" alt="SciPy">
     </a>
